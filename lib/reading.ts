@@ -1,3 +1,13 @@
-// Add Madhumita's chosen articles and papers here when she supplies them.
-export type Reading = {title:string;url:string;type:"Article"|"Paper";note:string};
-export const readings: Reading[] = [];
+export type Reading={id:string;title:string;url:string;type:"Article"|"Paper"|"Guide";category:string;note:string};
+export const readings:Reading[]=[
+{id:"self-compassion",category:"Self-care",type:"Paper",title:"Self-Compassion: Theory, Method, Research, and Intervention",url:"https://doi.org/10.1146/annurev-psych-032420-031047",note:"Self-compassion, motivation, and well-being."},
+{id:"compassion-fatigue",category:"Self-care",type:"Article",title:"Addressing compassion fatigue",url:"https://www.apa.org/topics/psychotherapy/compassion-fatigue",note:"A reading pick on feeling mentally overextended."},
+{id:"embodied-manipulation",category:"Robotics",type:"Paper",title:"Embodied Robot Manipulation in the Era of Foundation Models",url:"https://ieeexplore.ieee.org/abstract/document/11691064/",note:"Planning, learning, manipulation, and foundation-model robotics."},
+{id:"autonomy-alliance",category:"Robotics",type:"Paper",title:"From autonomy to alliance: Robotic foundation models must learn with us, not just for us",url:"https://doi.org/10.1126/scirobotics.aea1822",note:"Human–robot collaboration and learning together."},
+{id:"motivated-reasoning",category:"Human psychology",type:"Article",title:"Motivated Reasoning",url:"https://www.psychologytoday.com/us/basics/motivated-reasoning",note:"Beliefs, evidence, and how we reason."},
+{id:"cognitive-biases",category:"Human psychology",type:"Article",title:"How Cognitive Biases Affect Your Mental Health",url:"https://www.simplypsychology.com/articles/cognitive-biases-mental-health-impact",note:"Negativity bias, sunk-cost thinking, and everyday patterns."},
+{id:"rl-introduction",category:"Reinforcement learning",type:"Guide",title:"Spinning Up in Deep RL — Introduction",url:"https://spinningup.openai.com/en/latest/user/introduction.html",note:"Revisiting the concepts behind deep reinforcement learning."},
+{id:"rl-algorithms",category:"Reinforcement learning",type:"Guide",title:"Algorithms in Spinning Up",url:"https://spinningup.openai.com/en/latest/user/algorithms.html",note:"A reference for PPO, SAC, DDPG, and related algorithms."},
+{id:"simon-pape",category:"Digital art",type:"Article",title:"Simon Pape on creating a fantasy underwater scene",url:"https://www.creativebloq.com/art/digital-art/for-me-drawing-is-thinking-out-loud-on-canvas-simon-pape-on-his-process-for-creating-a-fantasy-underwater-scene",note:"Reference, mood, color, and a digital artist’s process."},
+{id:"1000xresist",category:"Digital art",type:"Article",title:"Inside the Art Direction of 1000xRESIST",url:"https://www.ensemble.art/blog/inside-the-art-direction-of-1000xresist-with-kodai-yanagawa",note:"Art direction, storytelling, and building a visual world."}
+];
