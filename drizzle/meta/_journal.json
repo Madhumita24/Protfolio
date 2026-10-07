@@ -15,6 +15,13 @@
       "when": 1791413519468,
       "tag": "0001_awesome_santa_claus",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791413830781,
+      "tag": "0002_flowery_patriot",
+      "breakpoints": true
     }
   ]
 }
