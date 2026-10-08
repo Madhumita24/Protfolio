@@ -1,0 +1,7 @@
+{
+  "name": "protfolio1",
+  "main": "build/sites-worker.ts",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [{"binding":"DB","database_name":"site-creator-d1","database_id":"3f9b0f19-3f4f-4153-8416-9cce982804fb","migrations_dir":"drizzle"}]
+}

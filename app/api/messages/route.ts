@@ -1,8 +1,8 @@
+import {allowedOrigin} from "@/lib/site-config";
 import { database, notify } from "@/lib/inbox";
 export async function POST(request:Request) {
  const origin = request.headers.get("origin");
- const allowed = ["https://madhumita-robotics-portfolio.kolukuluri-m.chatgpt.site","http://localhost:5173","http://127.0.0.1:5173","http://127.0.0.1:4173"];
- if(!origin || !allowed.includes(origin)) return Response.json({error:"Please submit from the portfolio."},{status:403});
+ if(!allowedOrigin(origin)) return Response.json({error:"Please submit from the portfolio."},{status:403});
  if(!request.headers.get("content-type")?.startsWith("application/json")) return Response.json({error:"Unsupported request."},{status:415});
  try {
   const raw=await request.text();
@@ -21,7 +21,7 @@ export async function POST(request:Request) {
   if(!limit || limit.count>5) return Response.json({error:"Please try again in an hour."},{status:429});
   const id=crypto.randomUUID();
   await db.prepare("INSERT INTO messages (id,kind,name,email,body,created_at,email_status) VALUES (?,?,?,?,?,?,?)").bind(id,data.kind,name,email,body,new Date().toISOString(),"pending").run();
-  const status=data.kind==="question"?await notify(id,"From: "+(name||"A portfolio visitor")+"\nReply email: "+(email||"Not provided")+"\n\n"+body,email):"not_requested";
+  const status=await notify(id,"From: "+(name||"A portfolio visitor")+"\nReply email: "+(email||"Not provided")+"\n\n"+body,email,data.kind);
   await db.prepare("UPDATE messages SET email_status=? WHERE id=?").bind(status,id).run();
   return Response.json({saved:true,emailSent:status==="sent"});
  } catch(error) {console.error("Submission failed",error instanceof Error?error.message:"unknown");return Response.json({error:"The inbox is temporarily unavailable. Your message has not been confirmed. Please try again."},{status:503});}

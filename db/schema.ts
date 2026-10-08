@@ -8,3 +8,5 @@ export const messages = sqliteTable("messages", {
 export const limits = sqliteTable("submission_limits", { key: text("key").primaryKey(), count: integer("count").notNull() });
 export const comments=sqliteTable("reading_comments",{id:text("id").primaryKey(),readingId:text("reading_id").notNull(),parentId:text("parent_id"),name:text("name").notNull(),body:text("body").notNull(),createdAt:text("created_at").notNull()},t=>[index("idx_reading_comments_reading_created").on(t.readingId,t.createdAt)]);
 export const portfolioContent=sqliteTable('portfolio_content',{id:text('id').primaryKey(),draft:text('draft').notNull(),published:text('published'),revision:integer('revision').notNull(),publishedAt:text('published_at')});
+export const ownerCodes=sqliteTable('owner_codes',{id:text('id').primaryKey(),codeHash:text('code_hash').notNull(),expiresAt:integer('expires_at').notNull(),attempts:integer('attempts').notNull()});
+export const ownerSessions=sqliteTable('owner_sessions',{tokenHash:text('token_hash').primaryKey(),expiresAt:integer('expires_at').notNull()});
